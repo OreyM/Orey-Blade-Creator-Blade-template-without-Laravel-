@@ -1,62 +1,30 @@
-# Blade Creator
-v.0.1903.20
+# Blade Creator (Blade template without Laravel)
+**v.0.1903.20**
 
-Инструмент для создания фронта с использованием Laravel Blade шаблонизатора.
+Инструмент для создания html-шаблонов с использованием Laravel Blade шаблонизатора.
 
-Поддержка роутов.
+Интегрированный Docker.
+
+Поддержка маршрутизации.
 
 ## Инструкция
 
 Клонируйте данный репозиторий.
 
-
 **Переименуйте каталог в имя каталога вашего проекта:**
 
 ```bash
-mv Laravel-Docker-LAMP-version YOUR_PROJECT_NAME
+mv Orey-Blade-Creator-Blade-template-without-Laravel- YOUR_PROJECT_NAME
 ```
 
 3. Откройте файл настройки `.env` в корне проекта и укажите следующие параметры:
 
-* `PROJECT_NAME` - если хотите, что бы доккер обрабатывал вами именнованный проект (это не связано с именем корневой диретории), укажите здесь это имя. Учтите, что имя должно совпадать с именем каталога в директории `/www/`. По умолчанию указано `laravel.dev`.
+* `PROJECT_NAME` - если хотите, что бы доккер обрабатывал вами именнованный проект (это не связано с именем корневой диретории), укажите здесь это имя. Учтите, что имя должно совпадать с именем каталога в директории `/www/`. По умолчанию указано `blade.template`.
 
-* `ROOT_PASSWORD` - пароль root-доступа к базе данных в доккере.
-
-* `DATABASE` - задаст имя базы данных для работы с ней Laravel-проекта.
-
-* `USER` - задаст пользователя с доступом у базе данных.
-
-* `PASSWORD` - задаст пароль доступа пользователя.
-
-**Дать права на каталоги `storage` и `bootstrap/cache` в каталоге Laravel-проекта:**
+** Запустить сборку проекта и стартануть его (в каталоге доккер-проекта):**
 
 ```bash
-cd YOUR_PROJECT_NAME/www/laravel.dev
-sudo chmod 777 -R storage && sudo chmod 777 -R bootstrap/cache
-```
-** Запустить сборку проекта и стартануть его:**
-
-```bash
-cd ../..
 docker-compose up --build
-```
-
-**Дождитесь окончания инициализации Composer:**
-
-```bash
-composer_1 ...
-```
-
-Переименуйте файл `.env.example` в `.env`:
-
-```bash
-cd www/laravel.dev
-mv .env.example .env
-```
-
-Сгенерируйте новые ключи:
-```bash
-php artisan key:generate
 ```
 
 На данный момент можно запустить проект по адресу:
@@ -64,15 +32,6 @@ php artisan key:generate
 ```bash
 http://localhost:8080/
 ```
-
-Так же можно открыть PHPMyAdminer:
-
-```bash
-http://localhost:6080/
-```
-
-По умолчанию, рабочая база данных - `laravel`, логин и пароль - `root`.
-
 
 ## Доступы к терминалам
 
@@ -82,31 +41,24 @@ http://localhost:6080/
 docker-compose exec server bash
 ```
 
-Доступ к bash-терминалу MySQL-сервера (в каталоге доккер-проекта):
+## Использование
 
-```bash
-docker-compose exec db bash
-mysql -u root -p
+Рабочие файлы расположены в директории **www/blade.template/resources**.
+
+Представления вида: **www/blade.template/resources/views**.
+
+Маршруты: **www/blade.template/routes**.
+
+### Создание маршрута
+
+Маршруты указываются в файле **www/blade.template/routes/web.php**.
+
+```php
+$router->get('/', function() use ($blade){
+    return $blade->render('home');
+});
 ```
 
-## ТЕСТ
+Первый параметр - uri, во втором в функцию передается имя файла вида без разширения **.blade.php**.
 
-Перейдите в каталог с Laravel-проектом (по умолчанию `/www/laravel.dev`) и выполните команду:
-
-```bash
-php artisan make:auth
-```
-
-Внесите настройки доступа к базе данных в файле `.env` в каталоге Laravel-проекта.
-
-Обратите внимание, что ip сервера отличается от ip-адреса MySQL сервера. В настройка `DB_HOST` не стоит указывать `localhost` или `127.0.0.1`. Вам необходимо указать ip-адрес MySQL-сервера, который можно узнать командой:
-
-````bash
-docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' container_name_or_id
-````
-
-Запустите миграции:
-
-```bash
-php artisan migrate
-```
+[Документация по использованию Blade](https://laravel.com/docs/7.x/blade)
