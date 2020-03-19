@@ -1,0 +1,7 @@
+.idea
+.git
+logs/apache2
+logs/mysql
+www/blade.template/cache
+www/blade.template/resources/cache
+www/blade.template/vendor

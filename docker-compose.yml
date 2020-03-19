@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  server:
+    build: ./images/apache
+    environment:
+      - APACHE_RUN_USER=#1000
+    ports:
+      - "8080:80"
+      - "443:443"
+    restart: 'always'
+    volumes:
+      - ./www/${PROJECT_NAME}:/var/www/html/
+      - ${PHP_INI_HOST}:/usr/local/etc/php/php.ini
+      - ${SITE_CONFIG_HOST}:/etc/apache2/sites-enabled
+      - ${APACHE_LOG}:/var/log/apache2
+    working_dir: /var/www
+
+  composer:
+    image: composer
+    volumes:
+      - ./www/${PROJECT_NAME}:/var/www/html/
+    working_dir: /var/www/html/
+    command: composer install

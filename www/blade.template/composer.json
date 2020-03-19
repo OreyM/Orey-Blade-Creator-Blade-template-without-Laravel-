@@ -1,0 +1,6 @@
+{
+    "require": {
+        "duncan3dc/blade": "^4.8",
+        "phroute/phroute": "^2.1"
+    }
+}
