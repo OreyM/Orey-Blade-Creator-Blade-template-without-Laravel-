@@ -31,6 +31,10 @@ class ComposerStaticInitec60adab747f341d4cfe41e88c9b23f6
             'Psr\\Container\\' => 14,
             'Phroute\\Phroute\\' => 16,
         ),
+        'O' => 
+        array (
+            'Orey\\Mimics\\' => 12,
+        ),
         'I' => 
         array (
             'Illuminate\\View\\' => 16,
@@ -90,6 +94,10 @@ class ComposerStaticInitec60adab747f341d4cfe41e88c9b23f6
         'Phroute\\Phroute\\' => 
         array (
             0 => __DIR__ . '/..' . '/phroute/phroute/src/Phroute',
+        ),
+        'Orey\\Mimics\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/_src/mimics/Class',
         ),
         'Illuminate\\View\\' => 
         array (

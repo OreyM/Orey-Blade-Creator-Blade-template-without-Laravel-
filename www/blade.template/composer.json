@@ -2,5 +2,10 @@
     "require": {
         "duncan3dc/blade": "^4.8",
         "phroute/phroute": "^2.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Orey\\Mimics\\": "_src/mimics/Class"
+        }
     }
 }

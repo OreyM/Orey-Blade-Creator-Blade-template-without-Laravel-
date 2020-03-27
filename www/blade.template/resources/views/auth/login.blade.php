@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
-@section('title', 'Test Page Title')
+@section('title', 'Login Page')
 
 @section('content')
-    <h1>{{ __('home.testPage') }}</h1>
+    <h1>Login page</h1>
     <a href="{{ url('/') }}">{{ __('home.returnHome') }}</a>
 @endsection

@@ -13,9 +13,6 @@ class ComposerAutoloaderInitec60adab747f341d4cfe41e88c9b23f6
         }
     }
 
-    /**
-     * @return \Composer\Autoload\ClassLoader
-     */
     public static function getLoader()
     {
         if (null !== self::$loader) {
